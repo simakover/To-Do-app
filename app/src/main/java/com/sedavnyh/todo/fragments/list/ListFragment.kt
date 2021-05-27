@@ -16,9 +16,8 @@ import com.sedavnyh.todo.data.viewmodel.ToDoViewModel
 import com.sedavnyh.todo.databinding.FragmentListBinding
 import com.sedavnyh.todo.fragments.SharedViewModel
 import com.sedavnyh.todo.fragments.list.adapter.ListAdapter
-import jp.wasabeef.recyclerview.animators.LandingAnimator
 import jp.wasabeef.recyclerview.animators.SlideInUpAnimator
-import java.text.ParsePosition
+
 
 class ListFragment : Fragment(), SearchView.OnQueryTextListener {
 
@@ -32,7 +31,7 @@ class ListFragment : Fragment(), SearchView.OnQueryTextListener {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 
         //Data binding
         _binding = FragmentListBinding.inflate(inflater, container, false)
@@ -74,20 +73,19 @@ class ListFragment : Fragment(), SearchView.OnQueryTextListener {
                 adapter.notifyItemRemoved(viewHolder.adapterPosition)
 
                 //call restore
-                restoreDeletedData(viewHolder.itemView, itemToDelete, viewHolder.adapterPosition)
+                restoreDeletedData(viewHolder.itemView, itemToDelete)
             }
         }
         val itemTouchHelper = ItemTouchHelper(swipeToDeleteCallback)
         itemTouchHelper.attachToRecyclerView(recyclerView)
     }
 
-    private fun restoreDeletedData(view: View, deletedItem: ToDoData, position: Int) {
+    private fun restoreDeletedData(view: View, deletedItem: ToDoData ) {
         val snackBar = Snackbar.make(
             view, "Deleted '${deletedItem.title}'", Snackbar.LENGTH_LONG
         )
         snackBar.setAction("Undo") {
             mToDoViewModel.insertData(deletedItem)
-            adapter.notifyItemChanged(position)
         }
         snackBar.show()
     }
