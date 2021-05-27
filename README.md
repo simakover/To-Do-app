@@ -1,5 +1,5 @@
 # To Do app 
-![stable release](https://img.shields.io/badge/Download-v1.0-blue)
+[![stable release](https://img.shields.io/badge/Download-v1.0-blue)](https://github.com/simakover/To-Do-app/releases/tag/v1.0)
 
 ### About app
 application that allows you to create a simple to-do list
