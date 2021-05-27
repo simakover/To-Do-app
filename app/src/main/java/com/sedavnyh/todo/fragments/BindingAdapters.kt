@@ -28,16 +28,6 @@ class BindingAdapters {
             }
         }
 
-        //Setup binding for check epmty database
-        @BindingAdapter("android:emptyDatabase")
-        @JvmStatic
-        fun emptyDatabase(view: View, emptyDatabase: MutableLiveData<Boolean>){
-            when(emptyDatabase.value){
-                true -> view.visibility = View.VISIBLE
-                false -> view.visibility = View.INVISIBLE
-            }
-        }
-
         //option to change color of cardview
         @BindingAdapter("android:parsePriorityColor")
         @JvmStatic

@@ -98,4 +98,10 @@ class UpdateFragment : Fragment() {
         builder.setMessage("Are you sure you want to remove '${args.currentItem.title}'?")
         builder.create().show()
     }
+
+    //Destroy view
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
 }

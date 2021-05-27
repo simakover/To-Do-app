@@ -43,8 +43,12 @@ class ListFragment : Fragment(), SearchView.OnQueryTextListener {
         setupRecyclerView()
 
         // Observe changes to data
-        mToDoViewModel.getAllData.observe(viewLifecycleOwner, Observer { data ->
-            adapter.setData(data)
+        mToDoViewModel.getAllData.observe(viewLifecycleOwner, {
+            mSharedViewModel.checkIfDatabaseIsEmpty(it)
+            adapter.setData(it)
+        })
+        mSharedViewModel.emptyDatabase.observe(viewLifecycleOwner, {
+            showEmptyDatabaseViews(it)
         })
 
         //set menu
@@ -54,6 +58,16 @@ class ListFragment : Fragment(), SearchView.OnQueryTextListener {
         hideKeyboard(requireActivity())
 
         return binding.root
+    }
+
+    private fun showEmptyDatabaseViews(emptyDatabase: Boolean) {
+        if(emptyDatabase){
+            binding.noDataTextView.visibility = View.VISIBLE
+            binding.noDataImageView.visibility = View.VISIBLE
+        } else {
+            binding.noDataTextView.visibility = View.INVISIBLE
+            binding.noDataImageView.visibility = View.INVISIBLE
+        }
     }
 
     private fun setupRecyclerView() {
@@ -119,6 +133,7 @@ class ListFragment : Fragment(), SearchView.OnQueryTextListener {
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.list_fragment_menu, menu)
 
+        // enable searching
         val search = menu.findItem(R.id.menu_search)
         val searchView = search.actionView as? SearchView
         searchView?.isSubmitButtonEnabled = true
