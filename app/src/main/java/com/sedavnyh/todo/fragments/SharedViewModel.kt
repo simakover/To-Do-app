@@ -62,4 +62,5 @@ class SharedViewModel(application: Application): AndroidViewModel(application) {
             Priority.LOW -> 2
         }
     }
+
 }

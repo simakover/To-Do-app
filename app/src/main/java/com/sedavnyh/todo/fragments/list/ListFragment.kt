@@ -126,7 +126,6 @@ class ListFragment : Fragment(), SearchView.OnQueryTextListener {
     // Delete data from menu button
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.menu_delete_all -> confirmDeleteAll()
             R.id.menu_priority_high -> mToDoViewModel.sortByHighPriority.observe(
                 viewLifecycleOwner,
                 Observer {
@@ -154,20 +153,6 @@ class ListFragment : Fragment(), SearchView.OnQueryTextListener {
         val searchView = search.actionView as? SearchView
         searchView?.isSubmitButtonEnabled = true
         searchView?.setOnQueryTextListener(this)
-    }
-
-    // Confirmation alert on deletion
-    private fun confirmDeleteAll() {
-        val builder = AlertDialog.Builder(requireContext())
-        builder.setPositiveButton("Yes") { _, _ ->
-            mToDoViewModel.deleteAllData()
-            Toast.makeText(requireContext(), "All items successfully removed", Toast.LENGTH_SHORT)
-                .show()
-        }
-        builder.setNegativeButton("No") { _, _ -> }
-        builder.setTitle("Delete all items?")
-        builder.setMessage("Are you sure you want to remove all items?")
-        builder.create().show()
     }
 
     //Destroy view

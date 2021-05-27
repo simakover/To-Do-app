@@ -12,7 +12,10 @@
     <group android:checkableBehavior="none">
         <item
             android:id="@+id/sort_by"
-            android:title="@string/sort_by">
+            android:title="@string/sort_by"
+            app:showAsAction="ifRoom"
+            android:icon="@drawable/ic_sort"
+            android:iconTint="@color/white">
             <menu>
                 <item
                     android:id="@+id/menu_priority_high"
@@ -28,14 +31,11 @@
     </group>
 
     <item
-        android:id="@+id/menu_delete_all"
-        android:title="@string/delete_all"
-        app:showAsAction="never"
-        />
-    <item
         android:id="@+id/menu_settings"
         android:title="@string/settings"
-        app:showAsAction="never"
+        app:showAsAction="ifRoom"
+        android:icon="@drawable/ic_settings"
+        android:iconTint="@color/white"
         />
 
 </menu>

@@ -11,6 +11,9 @@
             app:title="@string/layout_label"
             app:useSimpleSummaryProvider="true" />
 
+        <Preference
+            app:title="@string/delete_all"
+            app:key="delete_all"/>
     </PreferenceCategory>
 
 </PreferenceScreen>
