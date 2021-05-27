@@ -1,4 +1,5 @@
 # To Do app 
+![stable release](https://img.shields.io/badge/Download-v1.0-blue)
 
 ### about app
 application that allows you to create a simple to-do list
@@ -14,9 +15,7 @@ application that allows you to create a simple to-do list
 
 ### Future improvements
 
-~~- change tasks layout~~
-- add app icon
 - Localization
-- Add proper dark theme
+- Add proper dark theme control
 
 ##### The application was created as part of the study of the android platform
