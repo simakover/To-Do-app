@@ -8,6 +8,8 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
+import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.*
 import com.google.android.material.snackbar.Snackbar
 import com.sedavnyh.todo.R
@@ -27,6 +29,7 @@ class ListFragment : Fragment(), SearchView.OnQueryTextListener {
     private val adapter: ListAdapter by lazy { ListAdapter() }
     private val mToDoViewModel: ToDoViewModel by viewModels()
     private val mSharedViewModel: SharedViewModel by viewModels()
+    private var typeLayout:String? = "linear_layout"
 
     // Start view, setup binding, recycler
     override fun onCreateView(
@@ -38,6 +41,9 @@ class ListFragment : Fragment(), SearchView.OnQueryTextListener {
         _binding = FragmentListBinding.inflate(inflater, container, false)
         binding.lifecycleOwner = this
         binding.mSharedViewModel = mSharedViewModel
+
+        //Load global setting
+        loadSettings()
 
         //Setup recycler view
         setupRecyclerView()
@@ -60,6 +66,11 @@ class ListFragment : Fragment(), SearchView.OnQueryTextListener {
         return binding.root
     }
 
+    private fun loadSettings() {
+        val sharedPreference = PreferenceManager.getDefaultSharedPreferences(context)
+        typeLayout = sharedPreference.getString("type_layout", "liner_layout")
+    }
+
     private fun showEmptyDatabaseViews(emptyDatabase: Boolean) {
         if(emptyDatabase){
             binding.noDataTextView.visibility = View.VISIBLE
@@ -73,8 +84,12 @@ class ListFragment : Fragment(), SearchView.OnQueryTextListener {
     private fun setupRecyclerView() {
         val recyclerView = binding.recyclerView
         recyclerView.adapter = adapter
-        recyclerView.layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
-        /*recyclerView.layoutManager = LinearLayoutManager(requireActivity())*/
+
+        if (typeLayout == "linear_layout")
+            recyclerView.layoutManager = LinearLayoutManager(requireActivity())
+        else
+            recyclerView.layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
+
         recyclerView.itemAnimator = SlideInUpAnimator().apply {
             addDuration = 300
         }
@@ -125,6 +140,7 @@ class ListFragment : Fragment(), SearchView.OnQueryTextListener {
             R.id.menu_date_create -> mToDoViewModel.getAllData.observe(this, Observer { data ->
                 adapter.setData(data)
             })
+            R.id.menu_settings -> findNavController().navigate(R.id.action_listFragment_to_settingsFragment)
         }
         return super.onOptionsItemSelected(item)
     }

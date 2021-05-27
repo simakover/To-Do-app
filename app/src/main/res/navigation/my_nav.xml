@@ -24,6 +24,13 @@
             app:exitAnim="@anim/to_right"
             app:popEnterAnim="@anim/from_right"
             app:popExitAnim="@anim/to_left" />
+        <action
+            android:id="@+id/action_listFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment"
+            app:enterAnim="@anim/from_right"
+            app:exitAnim="@anim/to_left"
+            app:popEnterAnim="@anim/from_left"
+            app:popExitAnim="@anim/to_right" />
     </fragment>
     <fragment
         android:id="@+id/addFragment"
@@ -53,5 +60,17 @@
         <argument
             android:name="current_item"
             app:argType="com.sedavnyh.todo.data.models.ToDoData" />
+    </fragment>
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.sedavnyh.todo.fragments.settings.SettingsFragment"
+        android:label="@string/settings" >
+        <action
+            android:id="@+id/action_settingsFragment_to_listFragment"
+            app:destination="@id/listFragment"
+            app:enterAnim="@anim/from_left"
+            app:exitAnim="@anim/to_right"
+            app:popUpTo="@id/listFragment"
+            app:popUpToInclusive="true" />
     </fragment>
 </navigation>

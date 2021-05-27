@@ -1,0 +1,12 @@
+<resources>
+    <!-- layout Preference -->
+    <string-array name="layout">
+        <item>Linear layout</item>
+        <item>Staggered layout</item>
+    </string-array>
+
+    <string-array name="layout_values">
+        <item>linear_layout</item>
+        <item>staggered_layout</item>
+    </string-array>
+</resources>

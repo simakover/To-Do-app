@@ -1,0 +1,16 @@
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <PreferenceCategory app:title="@string/settings"
+        app:icon="@drawable/ic_settings">
+
+        <ListPreference
+            app:defaultValue="linear_layout"
+            app:entries="@array/layout"
+            app:entryValues="@array/layout_values"
+            app:key="type_layout"
+            app:title="@string/layout_label"
+            app:useSimpleSummaryProvider="true" />
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

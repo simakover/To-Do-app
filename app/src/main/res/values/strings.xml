@@ -17,9 +17,11 @@
     <string name="type_layout">Type layout</string>
     <string name="linear">Linear</string>
     <string name="staggered">Staggered</string>
+    <string name="settings">Settings</string>
     <string-array name="priorities">
         <item>High Priority</item>
         <item>Medium Priority</item>
         <item>Low Priority</item>
     </string-array>
+    <string name="layout_label">Type of Layout</string>
 </resources>
