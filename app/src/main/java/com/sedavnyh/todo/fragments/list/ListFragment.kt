@@ -16,6 +16,7 @@ import com.sedavnyh.todo.data.viewmodel.ToDoViewModel
 import com.sedavnyh.todo.databinding.FragmentListBinding
 import com.sedavnyh.todo.fragments.SharedViewModel
 import com.sedavnyh.todo.fragments.list.adapter.ListAdapter
+import com.sedavnyh.todo.utils.hideKeyboard
 import jp.wasabeef.recyclerview.animators.SlideInUpAnimator
 
 
@@ -48,6 +49,9 @@ class ListFragment : Fragment(), SearchView.OnQueryTextListener {
 
         //set menu
         setHasOptionsMenu(true)
+
+        //Hide soft keyboard
+        hideKeyboard(requireActivity())
 
         return binding.root
     }
