@@ -1,22 +1,22 @@
-# Приложение To Do
+# To Do app 
 
-### О приложении
-Позволяет создавать простой список задач
+### about app
+application that allows you to create a simple to-do list
 
-### Возможности приложения
+### Application features
 
-* Создание задачи
-* Изменение приоритета, заголовока, описаня задачи
-* Удаление задачи, в том числе свайпом влево
-* Удаление всех задач
-* Сортировка задач по приоритету
-* Поиск задач по заголовкам
+* create a task
+* change a task title, description and priority
+* delete a task
+* delete all tasks 
+* Sort tasks by priority
+* Filter tasks by title
 
-### Будущие доработки
+### Future improvements
 
-- Выбор вида отображения списка задач
-- Иконка для приложения
-- Локализация для нескольких языков
-- Использование темной темы
+~~- change tasks layout~~
+- add app icon
+- Localization
+- Add proper dark theme
 
-##### Приложение создано в рамках изучения платформы андроид
+##### The application was created as part of the study of the android platform
