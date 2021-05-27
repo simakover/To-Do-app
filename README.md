@@ -1,7 +1,7 @@
 # To Do app 
 ![stable release](https://img.shields.io/badge/Download-v1.0-blue)
 
-### about app
+### About app
 application that allows you to create a simple to-do list
 
 ### Application features
